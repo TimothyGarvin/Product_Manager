@@ -15,13 +15,17 @@ export default () => {
             })
             .catch(err => console.error(err));
         },[]);
+
+        const deleteProduct = productId => {
+            setProduct(product.filter(product => product._id != productId))
+        }
     return (
         <div>
             <h1>Register New Product</h1>
             <ProductForm/>
             <hr/>
             <h1>Inventory</h1>
-            {loaded && <ProductList product={product}/>}
+            {loaded && <ProductList product={product} deleteProduct={deleteProduct}/>}
         </div>
     )
 }
